@@ -1,0 +1,1 @@
+export const CAT_BREEDS = 'CAT_BREEDS';
