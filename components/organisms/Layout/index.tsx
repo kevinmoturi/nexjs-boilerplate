@@ -28,13 +28,8 @@ const Index = (props: any) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/react-query">
-                                    <a className='dark:text-white text-gray-900'>React Query</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/redux">
-                                    <a className='dark:text-white text-gray-900'>React Redux</a>
+                                <Link href="/breeds">
+                                    <a className='dark:text-white text-gray-900'>Cat Breeds</a>
                                 </Link>
                             </li>
                         </ul>
@@ -60,7 +55,7 @@ const Index = (props: any) => {
                     </Switch>
                 </div>
             </div>
-            <div className='grid md:grid-cols-4 grid-cols-1 gap-5 px-5 md:px-20'>
+            <div className='px-5 md:px-20'>
                 {props?.children}
             </div>
         </div>
