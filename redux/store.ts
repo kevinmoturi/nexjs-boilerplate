@@ -19,10 +19,9 @@ const reducer = (state: any, action: any) => {
     }
 };
 
-export const makeStore = () =>
-  configureStore({
+export const makeStore = () => configureStore({
     reducer,
-  });
+});
 
 type Store = ReturnType<typeof makeStore>;
 export type AppDispatch = Store['dispatch'];

@@ -11,8 +11,10 @@ const Home: NextPage = (props: any) => {
   const { count, breeds } = useSelector((state: any) => state.breeds)
   return (
     <Layout>
-      <h1>Count: {count}</h1>
-      <button onClick={() => dispatch(increment())}>Add</button>
+      <div className='w-full flex flex-row justify-between items-center mb-6'>
+        <h1 className='text-gray-900 dark:text-white'>Count: {count}</h1>
+        <button className='px-8 py-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded' onClick={() => dispatch(increment())}>Add</button>
+      </div>
       <div className='w-full grid md:grid-cols-4 grid-cols-1 gap-5'>
         {breeds && breeds.map((breed: any, i: any) => 
           <BreedCard key={i} breed={breed} url={`/breeds/${breed?.name}`} />
