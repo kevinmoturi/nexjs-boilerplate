@@ -1,5 +1,4 @@
 import React from 'react'
-import instance from '../../utils/instance';
 import Layout from '../../components/organisms/Layout/index'
 import { getCatBreeds } from '../../lib/cat-breeds.apis'
 import BreedCard from '../../components/organisms/BreedCard/index'

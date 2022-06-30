@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router'
 import Layout from '../../components/organisms/Layout/index'
 import { getCatBreedById } from '../../lib/cat-breeds.apis'
+import { useSelector } from "react-redux"
 
 const Breed = (props: any) => {
   const router = useRouter()
   const { id } = router.query
-
+  const { breeds } = useSelector((state: any) => state.breeds)
+  console.log(breeds);
     return (
         <Layout>
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
