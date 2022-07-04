@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/component/breeds.spec.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress"],
   "exclude": ["node_modules"]
 }
