@@ -1,7 +1,24 @@
-import { combineReducers, configureStore, Action } from '@reduxjs/toolkit'
+import { combineReducers, configureStore, Action, Store } from '@reduxjs/toolkit'
 import { ThunkAction } from 'redux-thunk'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import breeds from './breeds/breedSlice'
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+}
 
 const combinedReducer = combineReducers({
   breeds,
@@ -19,11 +36,21 @@ const reducer = (state: any, action: any) => {
     }
 };
 
-export const makeStore = () => configureStore({
-    reducer,
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export const store: any = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware:  any) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
-type Store = ReturnType<typeof makeStore>;
+export const makeStore: any = () => store;
+export let persistor = persistStore(store)
+
 export type AppDispatch = Store['dispatch'];
 export type RootState = ReturnType<Store['getState']>;
 export type AppStore = ReturnType<typeof makeStore>;
